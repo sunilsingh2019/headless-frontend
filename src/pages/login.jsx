@@ -9,6 +9,8 @@ import { GET_PAGE } from '../queries/pages/get-page';
 import { handleRedirectsAndReturnData } from '../utils/slug';
 import { getPreviewRedirectUrl } from '../utils/redirects';
 import Layout from '../components/layout';
+import Link from 'next/link';
+
 
 const Login = ({ data }) => {
   const router = useRouter();
@@ -86,41 +88,53 @@ const Login = ({ data }) => {
   const { username, password } = loginFields;
   return (
     <Layout data={data}>
-      <div className="login-form bg-gray-100 rounded-lg p-8 md:ml-auto mt-10 md:mt-12 w-5/12 m-auto">
-        <h4 className="text-gray-900 text-lg font-medium title-font mb-5 block">Login</h4>
-        {!isEmpty(errorMessage) && (
-          <div
-            className="text-red-600"
-            dangerouslySetInnerHTML={{ __html: sanitize(errorMessage) }}
-          />
-        )}
-        <form onSubmit={onFormSubmit} className="mb-4">
-          <label className="leading-7 text-sm text-gray-600">
-            Username:
-            <input
-              type="text"
-              className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              name="username"
-              value={username}
-              onChange={handleOnChange}
-            />
-          </label>
-          <br />
-          <label className="leading-7 text-sm text-gray-600">
-            Password:
-            <input
-              type="password"
-              className="mb-8 w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              name="password"
-              value={password}
-              onChange={handleOnChange}
-            />
-          </label>
-          <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">
-            Login
-          </button>
-          {loading ? <p>Loading...</p> : null}
-        </form>
+
+      <div className="sign-area pt-140 pb-140">
+        <div className="container">
+          <div className="sign-wrapper">
+            <div className="row align-items-center">
+              <div className="col-xl-7">
+                <div className="sign-image w-img">
+                  <img src="assets/img/about/sign-img-2.png" alt="sign-image" />
+                </div>
+              </div>
+              <div className="col-xl-5">
+                <div className="sign-content">
+                  <h5 className="sign-title mb-30"><b>Login</b> to account</h5>
+                  {!isEmpty(errorMessage) && (
+                    <div
+                      className="text-red-600"
+                      dangerouslySetInnerHTML={{ __html: sanitize(errorMessage) }}
+                    />
+                  )}
+                  <form onSubmit={onFormSubmit}>
+                    <div className="row">
+                      <div className="col-xxl-12 col-xl-12 col-lg-12">
+                        <div className="sign-input">
+                          <label className="sign-label mb-10">Your Email</label>
+                          <input id='email' name="username"
+                            value={username}
+                            onChange={handleOnChange} placeholder="Your Email" />
+                        </div>
+                        <div className="sign-input">
+                          <label className="sign-label mb-10">Password</label>
+                          <input id='password' name="password"
+                            value={password}
+                            onChange={handleOnChange} type="password" placeholder="Your password" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="defult-sign">
+                      <button type="submit" className="tp-sqbtn-active-2 w-100">Sign In</button>
+                    </div>
+                    {loading ? <p>Loading...</p> : null}
+                    <div className="sign-line"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );

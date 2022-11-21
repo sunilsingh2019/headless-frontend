@@ -1,12 +1,12 @@
-///import { GET_PAGE_BY_ID } from '../queries/pages/get-page';
-import { v4 } from 'uuid';
 import client from '../apollo/client';
+import { GET_PAGE_BY_ID } from '../queries/pages/get-page';
+import { v4 } from 'uuid';
 import LOGIN from '../mutations/login';
 
 export async function getPreviewPage(id) {
 
   const { data, errors } = await client.query({
-    query: LOGIN,
+    query: GET_PAGE_BY_ID,
     variables: {
       id: Number(id),
     },

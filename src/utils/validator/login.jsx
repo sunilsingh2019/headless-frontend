@@ -12,7 +12,7 @@ const validateAndSanitizeLoginForm = (data) => {
      * Note that the isEmpty() here is our custom function defined in is-empty.js and
      * Validator.isEmpty() down below comes from validator library.
      * Similarly we do it for for the rest of the fields
-     */
+  */
   data.username = (!isEmpty(data.username)) ? data.username : '';
   data.password = (!isEmpty(data.password)) ? data.password : '';
 
