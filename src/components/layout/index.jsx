@@ -68,9 +68,9 @@ const Layout = ({ data, isPost, children }) => {
         ) : null}
       </Head>
       <Header headerLogo={headerLogo} header={header} headerMenus={headerMenus?.edges} footer={footer} />
-      <div className="md:container px-5 py-24 mx-auto min-h-almost-screen">
-        {children}
-      </div>
+
+      {children}
+
       <Footer footerDown={footerDown} footer={footer} footerMenus={footerMenus?.edges} />
     </div>
   );

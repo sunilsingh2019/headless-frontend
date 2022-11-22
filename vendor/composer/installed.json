@@ -1,0 +1,60 @@
+{
+    "packages": [
+        {
+            "name": "valu/wp-graphql-offset-pagination",
+            "version": "v0.2.0",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/valu-digital/wp-graphql-offset-pagination.git",
+                "reference": "e32b594d40a8974e1c6a82686bd8657699b04be6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/valu-digital/wp-graphql-offset-pagination/zipball/e32b594d40a8974e1c6a82686bd8657699b04be6",
+                "reference": "e32b594d40a8974e1c6a82686bd8657699b04be6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "codeception/module-asserts": "^1.0",
+                "codeception/module-cli": "^1.0",
+                "codeception/module-db": "^1.0",
+                "codeception/module-filesystem": "^1.0",
+                "codeception/module-phpbrowser": "^1.0",
+                "codeception/module-rest": "^1.0",
+                "codeception/module-webdriver": "^1.0",
+                "codeception/util-universalframework": "^1.0",
+                "lucatume/wp-browser": "^2.2",
+                "phpunit/phpunit": "^8.0",
+                "valu/wp-testing-tools": "^0.4.0"
+            },
+            "time": "2020-05-06T07:36:57+00:00",
+            "type": "wordpress-plugin",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "WPGraphQL\\Extensions\\OffsetPagination\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Esa-Matti Suuronen",
+                    "email": "esa-matti.suuronen@valu.fi",
+                    "role": "developer"
+                }
+            ],
+            "description": "Add offset pagination to wp-graphql",
+            "support": {
+                "issues": "https://github.com/valu-digital/wp-graphql-offset-pagination/issues",
+                "source": "https://github.com/valu-digital/wp-graphql-offset-pagination"
+            },
+            "install-path": "../valu/wp-graphql-offset-pagination"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
