@@ -1,5 +1,4 @@
 const FooterTop = ({ footer }) => {
-  const getFooter = footer?.footerFieldGroup;
 
   return (
     <>
@@ -12,7 +11,7 @@ const FooterTop = ({ footer }) => {
           </div>
           <div className="footer__info-content">
             <p>
-              <a href="#">{getFooter?.address}</a>
+              <a href="#">{footer?.footerFieldGroup?.address}</a>
             </p>
           </div>
         </div>
@@ -26,10 +25,10 @@ const FooterTop = ({ footer }) => {
           </div>
           <div className="footer__info-content">
             <p>
-              <a href="mailto:{footer?.email1}">{getFooter?.email1}</a>
+              <a href="mailto:{footer?.email1}">{footer?.footerFieldGroup?.email1}</a>
             </p>
             <p>
-              <a href="mailto:{footer?.email2}">{getFooter?.email2}</a>
+              <a href="mailto:{footer?.email2}">{footer?.footerFieldGroup?.email2}</a>
             </p>
           </div>
         </div>
@@ -43,7 +42,7 @@ const FooterTop = ({ footer }) => {
           </div>
           <div className="footer__info-content">
             <p>
-              <a href="tel:{footer?.phone}">{getFooter?.phone}</a>
+              <a href="tel:{footer?.phone}">{footer?.footerFieldGroup?.phone}</a>
             </p>
 
           </div>

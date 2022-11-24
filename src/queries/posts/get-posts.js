@@ -1,10 +1,9 @@
 
 import { gql } from '@apollo/client'
-import ImageFragment from '../fragments/image';
-import MenuFragment from '../fragments/menus';
-import SeoFragment from '../fragments/seo';
-import { HeaderFooter } from '../get-menus';
-
+import MenuFragment from '../fragments/menus'
+import SeoFragment from "../fragments/seo";
+import {HeaderFooter} from "../get-menus";
+import ImageFragment from "../fragments/image";
 
 /**
  * Get Posts
@@ -30,6 +29,17 @@ export const GET_POSTS = gql`
         title
         excerpt
         slug
+        date
+        categories {
+          nodes {
+            name
+          }
+        }
+        author {
+          node {
+            name
+          }
+        }
         featuredImage {
           node {
             ...ImageFragment

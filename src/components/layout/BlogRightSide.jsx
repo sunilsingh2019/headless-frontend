@@ -1,6 +1,8 @@
 import Link from 'next/link';
 
-const BlogRightSide = ({ dynamicRoute }) => {
+const BlogRightSide = ({ dynamicRoute, posts }) => {
+  console.warn('posts', posts);
+
   return (
     <>
       <div className="col-xl-4 col-lg-4">

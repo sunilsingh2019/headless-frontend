@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import { HeaderFooter } from "../get-menus";
 import MenuFragment from "../fragments/menus";
+import {HeaderFooter} from "../get-menus";
 import SeoFragment from "../fragments/seo";
 import ImageFragment from "../fragments/image";
 
