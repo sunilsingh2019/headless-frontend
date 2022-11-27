@@ -1,4 +1,3 @@
-
 import { gql } from '@apollo/client'
 import MenuFragment from '../fragments/menus'
 import SeoFragment from "../fragments/seo";
@@ -11,48 +10,48 @@ import ImageFragment from "../fragments/image";
  */
 export const GET_POSTS = gql`
  query GET_POSTS( $uri: String, $perPage: Int, $offset: Int ) {
- ${HeaderFooter}
-  page: pageBy(uri: $uri) {
-    id
-    title
-    content
-    slug
-    uri
-    seo {
-      ...SeoFragment
+    ${HeaderFooter}
+    page: pageBy(uri: $uri) {
+      id
+      title
+      content
+      slug
+      uri
+      seo {
+        ...SeoFragment
+      }
     }
-  }
-  posts: posts(where: { offsetPagination: { size: $perPage, offset: $offset }}) {
-    edges {
-      node {
-        id
-        title
-        excerpt
-        slug
-        date
-        categories {
-          nodes {
-            name
+    posts: posts(where: { offsetPagination: { size: $perPage, offset: $offset }}) {
+      edges {
+        node {
+          id
+          title
+          excerpt
+          slug
+          date
+          categories {
+            nodes {
+              name
+            }
           }
-        }
-        author {
-          node {
-            name
+          author {
+            node {
+              name
+            }
           }
-        }
-        featuredImage {
-          node {
-            ...ImageFragment
+          featuredImage {
+            node {
+              ...ImageFragment
+            }
           }
         }
       }
-    }
-    pageInfo {
-      offsetPagination {
-        total
+      pageInfo {
+        offsetPagination {
+          total
+        }
       }
     }
-  }
  }
  ${MenuFragment}
  ${ImageFragment}

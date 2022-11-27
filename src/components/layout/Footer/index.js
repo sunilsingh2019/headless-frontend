@@ -1,9 +1,10 @@
 import React from 'react';
-import FooterBottom from './footerBottom';
-import FooterTop from './footerTop';
-import Nav from './nav';
+import Bottom from './bottom';
+import Navigation from './navigation';
+import Top from './top';
 
-const Footer = ({ footerMenus, footerDown, footer }) => {
+
+const footer = ({ footerMenus, footerDown, footer }) => {
   return (
     <>
       <footer>
@@ -11,22 +12,20 @@ const Footer = ({ footerMenus, footerDown, footer }) => {
           <div className="footer__top">
             <div className="container">
               <div className="footer__top-inner">
-                <div className="row ">
-                  <FooterTop footer={footer} />
-                </div>
+                <Top footer={footer}/>
               </div>
               <div className="row">
                 <div className="col-xxl-12">
-                  <Nav footerMenus={footerMenus} />
+                  <Navigation footerMenus={footerMenus}/>
                 </div>
               </div>
             </div>
           </div>
-          <FooterBottom footerDown={footerDown} />
+          <Bottom footerDown={footerDown}/>
         </div>
       </footer>
     </>
   );
 };
 
-export default Footer;
+export default footer;

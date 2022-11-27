@@ -5,6 +5,7 @@ import {createPaginationLinks} from '../../../utils/pagination';
 import cx from 'classnames';
 import Previous from './previous';
 import Next from './next';
+import { v4 as uuidv4 } from 'uuid';
 
 const Pagination = ( {pagesCount, postName} ) => {
 	if ( ! pagesCount || ! postName ) {
@@ -18,42 +19,43 @@ const Pagination = ( {pagesCount, postName} ) => {
 
 	return (
 		<div className="container">
-			<div className="row">
-					<div className="basic-pagination mb-50">
-						<nav>
-							<ul>
+			<div className="basic-pagination mb-50">
+				<nav>
+					<ul>
+					<li key={uuidv4() }>
+						<Previous currentPageNo={currentPageNo} postName={postName}/>
+					</li>
+						{paginationLinks.map( ( pageNo, index ) => {
 
-									<Previous currentPageNo={currentPageNo} postName={postName}/>
+							const paginationLink = `/${postName}/page/${pageNo}/`;
 
-									{paginationLinks.map( ( pageNo, index ) => {
-
-										const paginationLink = `/${postName}/page/${pageNo}/`;
-
-										return (
-											'number' === typeof pageNo ? (
-												<li>
-												<Link key={`id-${index}`} href={paginationLink}>
-													<a
-														className={cx( 'hover:text-black', {
-															'is-active bg-gray-500 text-black': pageNo === currentPageNo
-														} )}
-													>
-														{pageNo}
-													</a>
-												</Link>
-												</li>
-											) : (
-											// If its "..."
-												<span key={`id-${index}`} className="px-3 py-2">{pageNo}</span>
-											)
-										);
-									} )}
-									<Next currentPageNo={currentPageNo} pagesCount={pagesCount} postName={postName}/>
-							</ul>
-						</nav>
-					</div>
+							return (
+								'number' === typeof pageNo ? (
+									<li key={uuidv4() }>
+									<Link key={`id-${index}`} href={paginationLink}>
+										<a
+											className={cx( ' hover:text-white', {
+												'is-active bg-gray-500': pageNo === currentPageNo
+											} )}
+										>
+											{pageNo}
+										</a>
+									</Link>
+									</li>
+								) : (
+								// If its "..."
+									<span key={`id-${index}`} className="px-3 py-2">{pageNo}</span>
+								)
+							);
+						} )}
+						<li key={uuidv4() }>
+						<Next currentPageNo={currentPageNo} pagesCount={pagesCount} postName={postName}/>
+						</li>
+						
+					</ul>
+				</nav>
 			</div>
-	</div>
+		</div>
 	);
 };
 

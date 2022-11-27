@@ -4,7 +4,7 @@ import useSticky from '../../../hooks/use-sticky';
 import useGlobalContext from '../../../hooks/useGlobalContext';
 import Nav from './nav';
 import Logo from './logo';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../sidebar/Sidebar';
 
 
 const Header = ({ HeaderTwo, headerEight = false, homeNine, headerMenus, headerLogo, footer }) => {

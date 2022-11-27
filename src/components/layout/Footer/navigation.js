@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Nav = ({ footerMenus }) => {
+const Navigation = ({ footerMenus }) => {
   return (
     <div className="footer__widget">
       {footerMenus?.length ? (
@@ -16,4 +16,4 @@ const Nav = ({ footerMenus }) => {
   );
 }
 
-export default Nav;
+export default Navigation;

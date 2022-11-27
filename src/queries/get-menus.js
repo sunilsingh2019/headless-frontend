@@ -70,7 +70,6 @@ export const HeaderFooter = `
       phone
     }
   }
-  
 `
 
 

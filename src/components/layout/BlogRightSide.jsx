@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import Layout from '.';
+import client from '../../apollo/client';
+import { GET_SIDEBAR } from '../../queries/get-sidebar';
 
-const BlogRightSide = ({ dynamicRoute, posts }) => {
-  console.warn('posts', posts);
+const BlogRightSide = ({ data, dynamicRoute, posts }) => {
+  console.warn('data', data);
 
   return (
     <>
@@ -22,72 +25,20 @@ const BlogRightSide = ({ dynamicRoute, posts }) => {
                 <h6 className="sidebar-title">Popular Feeds</h6>
                 <div className="n-sidebar-feed">
                   <ul>
-                    <li>
-                      <div className="feed-number">
-                        <Link href="/blog-details">
-                          <a>
-                            <img src={dynamicRoute ? "/" + "assets/img/blog/small-news-1.jpg"
-                              : "assets/img/blog/small-news-1.jpg"} alt="" />
-                          </a>
-                        </Link>
-                      </div>
-                      <div className="feed-content">
-                        <span className="feed-date">
-                          <i className="fal fa-calendar-alt"></i> 20 March 2022
-                        </span>
-                        <h6><Link href="/blog-details">Don’t Underestimate The Software Administration UX</Link></h6>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="feed-number">
-                        <Link href="/blog-details">
-                          <a>
-                            <img src={dynamicRoute ? "/" + "assets/img/blog/small-news-4.jpg"
-                              : "assets/img/blog/small-news-4.jpg"} alt="" />
-                          </a>
-                        </Link>
-                      </div>
-                      <div className="feed-content">
-                        <span className="feed-date">
-                          <i className="fal fa-calendar-alt"></i> 24th March 2022
-                        </span>
-                        <h6><Link href="/blog-details">Better Product Pages Turn Visitors</Link>
-                        </h6>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="feed-number">
-                        <Link href="/blog-details">
-                          <a>
-                            <img src={dynamicRoute ? "/" + "assets/img/blog/small-news-2.jpg"
-                              : "assets/img/blog/small-news-2.jpg"} alt="" />
-                          </a>
-                        </Link>
-                      </div>
-                      <div className="feed-content">
-                        <span className="feed-date">
-                          <i className="fal fa-calendar-alt"></i> 20 March 2022
-                        </span>
-                        <h6><Link href="/blog-details">Orchestrating Complexity With Web Animations</Link></h6>
-                      </div>
-                    </li>
-                    <li>
-                      <div className="feed-number">
-                        <Link href="/blog-details">
-                          <a>
-                            <img src={dynamicRoute ? "/" + "assets/img/blog/small-news-3.jpg"
-                              : "assets/img/blog/small-news-3.jpg"} alt="" />
-                          </a>
-                        </Link>
-                      </div>
-                      <div className="feed-content">
-                        <span className="feed-date">
-                          <i className="fal fa-calendar-alt"></i> 24th March 2022
-                        </span>
-                        <h6><Link href="/blog-details">The Rise Of Design Thinking As A Problem </Link>
-                        </h6>
-                      </div>
-                    </li>
+                    {
+                      posts?.map((post, index) => {
+                        return (
+                          <li key={`${post?.node?.id}-${index}` ?? ''}>
+                            <div className="feed-content">
+                              <span className="feed-date">
+                                <i className="fal fa-calendar-alt"></i> {post?.node?.date}
+                              </span>
+                              <h6><Link href={`/blog/${post?.node?.slug}/`}>{post?.node?.title}</Link></h6>
+                            </div>
+                          </li>
+                        );
+                      })
+                    }
                   </ul>
                 </div>
               </div>
@@ -172,3 +123,4 @@ const BlogRightSide = ({ dynamicRoute, posts }) => {
 };
 
 export default BlogRightSide;
+

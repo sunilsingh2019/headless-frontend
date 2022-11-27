@@ -2,8 +2,6 @@ import { isEmpty } from 'lodash';
 import Link from 'next/link';
 
 const Nav = ({ headerMenus }) => {
-  console.warn('headerMenus', headerMenus);
-  //getChildMenu = headerMenus?.
   return (
     <>
       <nav id="mobile-menu">
@@ -20,7 +18,7 @@ const Nav = ({ headerMenus }) => {
                 {menu.node?.childItems?.edges.length > 0 && (
                   <ul className="submenu">
                     {menu.node?.childItems?.edges.map(childMenu => (
-                      <li><Link href={childMenu?.node.path}>{childMenu?.node.label}</Link></li>
+                      <li key={childMenu?.node.id}><Link href={childMenu?.node.path}>{childMenu?.node.label}</Link></li>
                     ))}
                   </ul>
                 )}

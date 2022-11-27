@@ -12,7 +12,6 @@ function Error404({ data }) {
 
       <Header headerLogo={headerLogo} headerMenus={headerMenus?.edges} footer={footer} />
       <Breadcrumb title="PAGE NOT FOUND" subtitle="404" />
-
       <div className="error-area pt-100 pb-140">
         <div className="container">
           <div className="row justify-content-center">

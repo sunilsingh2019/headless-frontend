@@ -15,12 +15,9 @@ const Previous = ( {currentPageNo, postName} ) => {
 	const paginationLink = `/${postName}/page/${currentPageNo - 1}/`;
 
 	return (
-		<li>
 		<Link href={paginationLink}>
-		<a><i className="far fa-angle-left"></i></a>
+			 <a><i className="far fa-angle-left"></i></a>
 		</Link>
-		</li>
-
 	);
 };
 
