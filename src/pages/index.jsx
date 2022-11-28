@@ -7,6 +7,7 @@ import { handleRedirectsAndReturnData } from '../utils/slug';
 
 
 export default function Home({ data }) {
+  { JSON.stringify(data.page.blocks.attributesJSON) }
   console.warn('data', data);
   return (
     <Layout data={data}>
@@ -25,9 +26,12 @@ export async function getStaticProps(context) {
   });
 
   const defaultProps = {
+
     props: {
-      blocks: JSON.parse(data?.page?.blocks?.attributesJSON),
-      //data: data || {},
+
+      blocks: JSON.parse(data.page.blocks.attributesJSON) || {},
+
+      data: data || {},
     },
     /**
      * Revalidate means that if a new request comes to server, then every 1 sec it will check
