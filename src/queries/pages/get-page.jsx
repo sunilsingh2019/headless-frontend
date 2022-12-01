@@ -12,12 +12,7 @@ export const GET_PAGE = gql`
 	    content
 	    slug
 	    uri
-			blocks {
-				... on AcfHeroModuleBlock {
-					attributesJSON
-					dynamicContent
-				}
-			}
+			blocksJSON
 			seo {
 				...SeoFragment
 			}

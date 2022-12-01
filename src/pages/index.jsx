@@ -1,17 +1,20 @@
 import React from 'react';
 import client from '../apollo/client';
+import { BlockRenderer } from '../components/BlockRenderer';
 import Layout from '../components/layout';
 import { GET_PAGE } from '../queries/pages/get-page';
+import { cleanAndTransformBlocks } from '../utils/cleanAndTransformBlocks';
 import { sanitize } from '../utils/miscellaneous';
 import { handleRedirectsAndReturnData } from '../utils/slug';
 
 
-export default function Home({ data }) {
-  { JSON.stringify(data.page.blocks.attributesJSON) }
+export default function Home({ data, blocks }) {
   console.warn('data', data);
+  console.warn('blocks', blocks);
   return (
     <Layout data={data}>
-      {data?.page?.content ? <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> : null}
+      {/* {data?.page?.content ? <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> : null} */}
+      <BlockRenderer blocks={blocks} />
     </Layout>
   );
 }
@@ -25,12 +28,11 @@ export async function getStaticProps(context) {
     },
   });
 
+  const blocks = cleanAndTransformBlocks(data.page.blocksJSON);
   const defaultProps = {
 
     props: {
-
-      blocks: JSON.parse(data.page.blocks.attributesJSON) || {},
-
+      blocks,
       data: data || {},
     },
     /**
