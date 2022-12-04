@@ -14,7 +14,7 @@ export default function Home({ data, blocks }) {
   return (
     <Layout data={data}>
       {/* {data?.page?.content ? <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> : null} */}
-      <BlockRenderer blocks={blocks} />
+      {<BlockRenderer blocks={blocks} />}
     </Layout>
   );
 }
