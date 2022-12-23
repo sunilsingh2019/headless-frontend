@@ -15,7 +15,7 @@ export const HomeIntro = ({blurb, heading_cta, heading, blurb_cta, listItems, he
   heroImgVal.push( heroImages['hero_image_' + i + '_image'])
  }
  if(enable_disable_module == 1) {
-
+console.log("heroImgVal", heroImgVal);
   return (
     <>
     <div id="bio-wrapper" className="bio-wrapper grey-bg pt-190">
@@ -52,7 +52,7 @@ export const HomeIntro = ({blurb, heading_cta, heading, blurb_cta, listItems, he
                             <i className="far fa-check"></i>
                           </div>
                           <div className="features__list-text">
-                            <p>{list}</p>
+                            <p>{list}{list.id}</p>
                           </div>
                         </li>
                       </ul>

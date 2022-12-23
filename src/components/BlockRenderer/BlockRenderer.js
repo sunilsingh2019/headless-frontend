@@ -4,11 +4,32 @@ import {Heading} from "../Heading";
 import { Hero } from "../Hero";
 import { HomeIntro } from "../HomeIntro";
 import { Paragraph } from "../Paragraph";
+import { Projects } from "../Projects";
+import { Service } from "../Service";
 
-export const BlockRenderer = ({ blocks }) => {
+export const BlockRenderer = ({ blocks, data }) => {
+  console.log("data Block: ", data);
+
   return blocks?.map((block) => {
     switch (block.name) {
-      
+      case "acf/projects-module": {
+        return (
+          <Projects 
+            key={block.id}
+            projects={block?.attributes?.data?.projects}
+          />
+        );
+      }
+      case "acf/services-module": {
+        return (
+          <Service 
+            key={block.id}
+            heading={block.attributes.data?.heading}
+            sub_heading={block.attributes.data?.sub_heading}
+            select_services={block.attributes.data?.select_services}
+          />
+        );
+      }
       case "core/paragraph": {
         return (
           <Paragraph 
@@ -24,7 +45,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "acf/hero-module": {
-        console.log("BLOCK: ", block);
         return (
           <Hero 
             key={block.id}

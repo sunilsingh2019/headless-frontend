@@ -7,14 +7,13 @@ import { cleanAndTransformBlocks } from '../utils/cleanAndTransformBlocks';
 import { sanitize } from '../utils/miscellaneous';
 import { handleRedirectsAndReturnData } from '../utils/slug';
 
-
 export default function Home({ data, blocks }) {
   console.warn('data', data);
   console.warn('blocks', blocks);
   return (
     <Layout data={data}>
       {/* {data?.page?.content ? <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> : null} */}
-      {<BlockRenderer blocks={blocks} />}
+      {<BlockRenderer blocks={blocks} data={data} />}
     </Layout>
   );
 }
@@ -28,7 +27,7 @@ export async function getStaticProps(context) {
     },
   });
 
-  const blocks = cleanAndTransformBlocks(data.page.blocksJSON);
+  const blocks = cleanAndTransformBlocks(data?.page.blocksJSON);
   const defaultProps = {
 
     props: {
