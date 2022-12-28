@@ -1,4 +1,6 @@
 import { theme } from "../../../theme";
+import AboutMeArea from "../AboutMe/AboutMeArea";
+import { Breadcrumbs } from "../Breadcrumbs";
 import {Cover} from "../Cover";
 import {Heading} from "../Heading";
 import { Hero } from "../Hero";
@@ -6,12 +8,53 @@ import { HomeIntro } from "../HomeIntro";
 import { Paragraph } from "../Paragraph";
 import { Projects } from "../Projects";
 import { Service } from "../Service";
+import Tab from "../Tab/AboutMeTabs";
 
-export const BlockRenderer = ({ blocks, data }) => {
-  console.log("data Block: ", data);
+export const BlockRenderer = ({ blocks }) => {
 
   return blocks?.map((block) => {
     switch (block.name) {
+      case "acf/tab-module": {
+        return (
+            <Tab 
+              key={block.id}
+              TabHeading={block.attributes?.data}
+            />
+        );
+      }
+      case "acf/about-me-module": {
+        return (
+          <>
+            <AboutMeArea 
+            key={block.id}
+            email={block?.attributes?.data?.email}
+            enable__disable_module={block?.attributes?.data?.enable__disable_module}
+            experience={block?.attributes?.data?.experience}
+            expertise={block?.attributes?.data?.expertise}
+
+            facebook={block?.attributes?.data?.facebook}
+            instagram={block?.attributes?.data?.instagram}
+            linkedin={block?.attributes?.data?.linkedin}
+            twitter={block?.attributes?.data?.linkedin}
+
+            name={block?.attributes?.data?.name}
+            phone={block?.attributes?.data?.phone}
+            position={block?.attributes?.data?.position}
+            profile_image={block?.attributes?.data?.profile_image}
+            />
+          </>
+        );
+      }
+      case "acf/breadcrumbs-module": {
+        return (
+          <>
+            <Breadcrumbs 
+            key={block.id}
+            title={block?.attributes?.data?.title}
+            />
+          </>
+        );
+      }
       case "acf/projects-module": {
         return (
           <Projects 

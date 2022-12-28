@@ -8,17 +8,15 @@ import { sanitize } from '../utils/miscellaneous';
 import { handleRedirectsAndReturnData } from '../utils/slug';
 
 export default function Home({ data, blocks }) {
-  console.warn('data', data);
-  console.warn('blocks', blocks);
   return (
     <Layout data={data}>
       {/* {data?.page?.content ? <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> : null} */}
-      {<BlockRenderer blocks={blocks} data={data} />}
+      <BlockRenderer blocks={blocks} data={data} /> 
     </Layout>
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps({context}) {
 
   const { data, errors } = await client.query({
     query: GET_PAGE,

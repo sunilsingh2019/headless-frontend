@@ -1,6 +1,6 @@
 import React from 'react';
 // test
-const AboutMeArea = () => {
+const AboutMeArea = ({email, phone, experience, expertise, profile_image, name, position, facebook, twitter, linkedin, instagram}) => {
   return (
     <>
       <div className="aboutme-area pt-140 pb-100">
@@ -8,28 +8,28 @@ const AboutMeArea = () => {
           <div className="row align-items-center">
             <div className="col-xl-5 col-lg-6">
               <div className="aboutme-image mb-40">
-                <img src="assets/img/about/about-me.jpg" alt="about-me img" />
+                <img src={profile_image.url} alt={profile_image.alt} />
               </div>
             </div>
             <div className="col-xl-7 col-lg-6">
               <div className="aboutme-wrapper mb-40">
                 <div className="aboutme-content">
-                  <h3 className="tpabout-xd-title mb-50"><b>Rasalina</b> Willam</h3>
-                  <span className="aboutme-sub-title">Ui/UX Deisgner @visiontrust</span>
+                  <h3 className="tpabout-xd-title mb-50"><b>{name}</b></h3>
+                  <span className="aboutme-sub-title">{position}</span>
                 </div>
                 <div className="aboutme-feature-list mt-25">
                   <ul>
-                    <li><p>Expertise:<a href="#"> Planning, Strategy</a></p></li>
-                    <li><p>Experience:<a href="#"> 15 Years</a></p></li>
-                    <li><p>E-mail:<a href="mailto:nerox490@gmail.com"> nerox490@gmail.com</a></p></li>
-                    <li><p>Phone:<a href="tel:507-452-1254"> 507-452-1254</a></p></li>
+                    <li><p>Expertise:<a href="#">{expertise}</a></p></li>
+                    <li><p>Experience:<a href="#">{ experience }</a></p></li>
+                    <li><p>E-mail:<a href={`mailto:${email}`}> {email}</a></p></li>
+                    <li><p>Phone:<a href={`tel:${phone}`}> {phone}</a></p></li>
                   </ul>
                 </div>
                 <div className="aboutme-social mt-40">
-                  <a href="#"><i className="fab fa-facebook-f"></i></a>
-                  <a href="#"><i className="fab fa-instagram"></i></a>
-                  <a href="#"><i className="fab fa-twitter"></i></a>
-                  <a href="#"><i className="fab fa-pinterest-p"></i></a>
+                <a target="_blank" href={linkedin}><i className="fa fa-linkedin"></i></a>
+                  <a target="_blank" href={facebook}><i className="fa fa-facebook-f"></i></a>
+                  <a target="_blank" href={instagram}><i className="fa fa-instagram"></i></a>
+                  <a target="_blank" href={twitter}><i className="fa fa-twitter"></i></a>
                 </div>
               </div>
             </div>

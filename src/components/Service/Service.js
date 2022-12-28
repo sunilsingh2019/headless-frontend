@@ -23,12 +23,12 @@ console.log('select_services', select_services)
                 </div>
                 <div className="tpservices__content">
                   <h4 className="tpservices__title mb-25">
-                    <Link href={`/services/${serviceItem?.uri}`}>
+                    <Link href={`services${serviceItem?.uri}`}>
                       <a >{serviceItem?.post_title}</a>
                     </Link>
                   </h4>
                   <div className="tpservices__btn mt-30">
-                    <Link href={`/services/${serviceItem?.uri}`}>
+                    <Link href={`services${serviceItem?.uri}`}>
                       <a>
                         <span></span>
                         <span></span>

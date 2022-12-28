@@ -50,7 +50,7 @@ export const Projects = ({projects}) => {
                       <SwiperSlide key={item.ID}>
                         <div className="tpfrn-project">
                           <div className="tpfrn-project__thumb mb-40">
-                            <Link href={`/work/${item?.uri}`}>
+                            <Link href={`work${item?.uri}`}>
                               <a>
                                 <img src={item?.featured_img_uri} alt="project-img" />
                               </a>
@@ -59,7 +59,7 @@ export const Projects = ({projects}) => {
                           <div className="tpfrn-project__content">
                             <span className="tpfrn-project-sub-title mb-10">{item.ID}</span>
                             <h5 className="tpfrn-project-title">
-                              <Link href={`/work/${item?.uri}`}>
+                              <Link href={`work${item?.uri}`}>
                                 <a>{item?.post_title}</a>
                               </Link>
                             </h5>

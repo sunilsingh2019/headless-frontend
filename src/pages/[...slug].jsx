@@ -6,9 +6,13 @@ import { GET_PAGE } from '../queries/pages/get-page';
 import Layout from '../components/layout';
 import { FALLBACK, handleRedirectsAndReturnData } from '../utils/slug';
 import { sanitize } from '../utils/miscellaneous';
+import { BlockRenderer } from '../components/BlockRenderer';
+import { cleanAndTransformBlocks } from '../utils/cleanAndTransformBlocks';
 
 
-const Page = ({ data }) => {
+const Page = ({ data, blocks}) => {
+	console.warn('dataslug', data);
+	console.warn('blocksslug', blocks);
 	const router = useRouter();
 
 	// If the page is not yet generated, this will be displayed
@@ -19,7 +23,8 @@ const Page = ({ data }) => {
 
 	return (
 		<Layout data={data}>
-			<div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} />
+			{/* <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> */}
+			<BlockRenderer blocks={blocks} data={data} /> 
 		</Layout>
 	);
 };
@@ -34,8 +39,11 @@ export async function getStaticProps({ params }) {
 		},
 	});
 
+	const blocks = cleanAndTransformBlocks(data?.page.blocksJSON);
 	const defaultProps = {
+		
 		props: {
+			blocks,
 			data: data || {}
 		},
 		/**
