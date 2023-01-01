@@ -53,12 +53,24 @@ const experienceData = [
   },
 ]
 
-const AboutMeTabs = ({TabHeading}) => {
-  var listVals = [];
-      
- for (var i = 0; i < TabHeading.tab; i++) {
-     listVals.push( TabHeading['tab_' + i + '_tab_heading'])
- }
+const AboutMeTabs = ({TabData}) => {
+ 
+ //first loop 
+ const number = TabData.tab;
+ const table = [...Array(number)];
+
+ const number2 = TabData.tab_1_two_column_cards;
+  const table2 = [...Array(number2)];
+
+ var slugify = require('slugify')
+  const slugifyOptions = {
+    replacement: '-',  // replace spaces with replacement character, defaults to `-`
+    remove: undefined, // remove characters that match regex, defaults to `undefined`
+    lower: true,      // convert to lower case, defaults to `false`
+    strict: false,     // strip special characters except replacement, defaults to `false`
+    locale: 'vi',       // language code of the locale to use
+    trim: true         // trim leading and trailing replacement chars, defaults to `true`
+  }
 
   return (
     <>
@@ -66,136 +78,55 @@ const AboutMeTabs = ({TabHeading}) => {
         <div className="container">
           <div className="row">
             <div className="col-xl-12">
-            {listVals?.length ? (
               <ul className="nav nav-tabs ab-tabs" id="myTab" role="tablist">
-                  {listVals?.map(tab => (
+              {table.map((_, index) => {
+                const tabTitle = `tab_${index}_tab_heading`;
+                
+                return (
                 <li className="nav-item" role="presentation">
-                  <button className="nav-link active ab-tab-item" id="about-tab" data-bs-toggle="tab" data-bs-target="#{tab}" type="button" role="tab" aria-controls="about" aria-selected="true">{tab} </button>
-                  {tab.ID}
+                  <button className={`nav-link ab-tab-item ${index===0 ? 'active' : ''}`} id={`${slugify(TabData[tabTitle], slugifyOptions)}-tab`} data-bs-toggle="tab" data-bs-target={`#${slugify(TabData[tabTitle], slugifyOptions)}`} type="button" role="tab" aria-controls={slugify(TabData[tabTitle],slugifyOptions)} aria-selected="true">{TabData[tabTitle]}</button>
                 </li>
-                 ))}
+                  );
+                })}
               </ul>
-               ) : null}
             </div>
           </div>
           <div className="tab-content mt-30" id="myTabContent">
-            <div className="tab-pane fade active show" id="about" role="tabpanel" aria-labelledby="about-tab">
-              <h4 className="tab-pane-title mb-20"><b>About</b> Nerox</h4>
-              <p className="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.</p>
-              <p className="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum</p>
-              <h4 className="tab-pane-title mt-40"><b>Main</b> Skills</h4>
-              <div className="experience-list mt-70">
-                <div className="row  row-cols-xxl-5 row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
-                  <div className="col">
-                    <div className="experience-item text-center mb-50">
-                      <div className="progress-circular tl-progress mb-30">
-                        <div style={{ width: 135, height: 135 }}>
-                          <CircularProgressbar value={90} text={'90%'} />
-                        </div>
-                      </div>
-                      <h5 className="skill-item-title">PHOTOSHOP</h5>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="experience-item text-center mb-50">
-                      <div className="progress-circular tl-progress mb-30">
-                        <div style={{ width: 135, height: 135 }}>
-                          <CircularProgressbar value={61} text={'61%'} />
-                        </div>
-                      </div>
-                      <h5 className="skill-item-title">ILLUSTRATOR</h5>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="experience-item text-center mb-50">
-                      <div className="progress-circular tl-progress mb-30">
-                        <div style={{ width: 135, height: 135 }}>
-                          <CircularProgressbar value={50} text={'50%'} />
-                        </div>
-                      </div>
-                      <h5 className="skill-item-title">ADOBE XD</h5>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="experience-item text-center mb-50">
-                      <div className="progress-circular tl-progress mb-30">
-                        <div style={{ width: 135, height: 135 }}>
-                          <CircularProgressbar value={67} text={'67%'} />
-                        </div>
-                      </div>
-                      <h5 className="skill-item-title">FIGMA</h5>
-                    </div>
-                  </div>
-                  <div className="col">
-                    <div className="experience-item text-center mb-50">
-                      <div className="progress-circular tl-progress mb-30">
-                        <div style={{ width: 135, height: 135 }}>
-                          <CircularProgressbar value={58} text={'58%'} />
-                        </div>
-                      </div>
-                      <h5 className="skill-item-title">SKATCH</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="tab-pane fade" id="skills" role="tabpanel" aria-labelledby="skills-tab">
-              <div className="about-award__wrap">
-                {
-                  awardData.map(item => (
-                    <div key={item.id} className="tp-award-item mb-30">
-                      <div className="award-inner d-md-flex align-items-center">
-                        <div className="award-image">
-                          <img src={item.img} alt="award-img" />
-                        </div>
-                        <div className="award-content">
-                          <h4 className="award-title">
-                            <Link href="/about-me"><a>{item.title}</a></Link>
-                          </h4>
-                          <span className="award-meta">
-                            <span className="award-year">2022..</span>  MNX Business Card</span>
-                        </div>
-                      </div>
-                      <div className="award-icon">
-                        <div className="award-icon-wrap">
-                          <Link href="/about-me">
-                            <a><i className="flaticon-right-arrow-1"></i></a>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-            <div className="tab-pane fade" id="awards" role="tabpanel" aria-labelledby="awards-tab">
-              <div className="about-skill__wrap">
-                <h4 className="tab-pane-title mb-20"><b>Diversity</b> of Experience</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate</p>
+            
+            {table.map((_, index) => {
+              // second loop
+              const tabTitle = `tab_${index}_tab_heading`;
+              const tabContentBlockHeading = `tab_${index}_content_block_heading`;
+              const tabContentBlock = `tab_${index}_content_block`;
+              
+              return (
+              <div className={`tab-pane fade ${index===0 ? 'active show' : ''}`} id={`${slugify(TabData[tabTitle], slugifyOptions)}`} role="tabpanel" aria-labelledby={`${slugify(TabData[tabTitle], slugifyOptions)}-tab`}>
+               <h4 className="tab-pane-title mb-20">{TabData[tabContentBlockHeading]}</h4>
+                <p className="desc">{TabData[tabContentBlock]}</p>
+                {/* two column card */}
                 <div className="row mt-70">
-                  {
-                    experienceData.map(item => (
-                      <div key={item.id} className="col-xl-6 cl-lg-6">
-                        <div className="experience-sm-item mb-40">
-                          <div className="experience-company-image mb-40">
-                            <img src={item.img} alt="experience-img" />
+                    {table.map((_, index) => {
+                      const tabTwoColumnCardsHeading = `tab_1_two_column_cards_${index}_heading`;
+                      const tabTwoColumnCardsBlurb = `tab_1_two_column_cards_${index}_blurb`;
+                      const tabTwoColumnCardsPosition = `tab_1_two_column_cards_${index}_position`;
+                      const tabTwoColumnCardsYear = `tab_1_two_column_cards_${index}_year`;
+                
+                      return (
+                        <div key={index} className="col-xl-6 cl-lg-6">
+                          <div className="experience-sm-item mb-40">
+                            {/* <div className="experience-company-image mb-40">
+                              <img src={TabData[tabTwoColumnCardsLogo]} alt="sdf" />
+                            </div> */}
+                            <h5 className="experience-title"><a>{TabData[tabTwoColumnCardsHeading]}</a></h5>
+                            <h5 className="experience-title"><a>{TabData[tabTwoColumnCardsPosition]}</a></h5>
+                            <span className="exp-duration mb-20">{TabData[tabTwoColumnCardsYear]}</span>
+                            <p>{TabData[tabTwoColumnCardsBlurb]}</p>
                           </div>
-                          <h5 className="experience-title"><a>{item.title}</a></h5>
-                          <span className="exp-duration mb-20">{item.date}</span>
-                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam</p>
                         </div>
-                      </div>
-                    ))
-                  }
-
+                      );
+                  })}
                 </div>
-              </div>
-            </div>
-
-            <div className="tab-pane fade" id="education" role="tabpanel" aria-labelledby="education-tab">
-              <div className="about-education__wrap">
-                <h4 className="tab-pane-title mb-20"><b>Diversity</b> of Experience</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.</p>
+                {/* four column  */}
                 <div className="row mt-50">
                   {
                     certificationData.map(item => (
@@ -212,8 +143,65 @@ const AboutMeTabs = ({TabHeading}) => {
                   }
 
                 </div>
-              </div>
+                {/* skills progress bar */}
+                <h4 className="tab-pane-title mt-40"><b>Main</b> Skills</h4>
+                <div className="experience-list mt-70">
+                  <div className="row  row-cols-xxl-5 row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1">
+                    <div className="col">
+                      <div className="experience-item text-center mb-50">
+                        <div className="progress-circular tl-progress mb-30">
+                          <div style={{ width: 135, height: 135 }}>
+                            <CircularProgressbar value={90} text={'90%'} />
+                          </div>
+                        </div>
+                        <h5 className="skill-item-title">PHOTOSHOP</h5>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="experience-item text-center mb-50">
+                        <div className="progress-circular tl-progress mb-30">
+                          <div style={{ width: 135, height: 135 }}>
+                            <CircularProgressbar value={61} text={'61%'} />
+                          </div>
+                        </div>
+                        <h5 className="skill-item-title">ILLUSTRATOR</h5>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="experience-item text-center mb-50">
+                        <div className="progress-circular tl-progress mb-30">
+                          <div style={{ width: 135, height: 135 }}>
+                            <CircularProgressbar value={50} text={'50%'} />
+                          </div>
+                        </div>
+                        <h5 className="skill-item-title">ADOBE XD</h5>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="experience-item text-center mb-50">
+                        <div className="progress-circular tl-progress mb-30">
+                          <div style={{ width: 135, height: 135 }}>
+                            <CircularProgressbar value={67} text={'67%'} />
+                          </div>
+                        </div>
+                        <h5 className="skill-item-title">FIGMA</h5>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="experience-item text-center mb-50">
+                        <div className="progress-circular tl-progress mb-30">
+                          <div style={{ width: 135, height: 135 }}>
+                            <CircularProgressbar value={58} text={'58%'} />
+                          </div>
+                        </div>
+                        <h5 className="skill-item-title">SKATCH</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
+              );
+            })}
           </div>
         </div>
       </div>

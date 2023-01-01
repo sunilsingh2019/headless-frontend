@@ -1,12 +1,15 @@
 import { theme } from "../../../theme";
 import AboutMeArea from "../AboutMe/AboutMeArea";
+import { Articles } from "../Articles";
 import { Breadcrumbs } from "../Breadcrumbs";
 import {Cover} from "../Cover";
+import { Cta } from "../Cta";
 import {Heading} from "../Heading";
 import { Hero } from "../Hero";
 import { HomeIntro } from "../HomeIntro";
 import { Paragraph } from "../Paragraph";
 import { Projects } from "../Projects";
+import { Reviews } from "../Reviews";
 import { Service } from "../Service";
 import Tab from "../Tab/AboutMeTabs";
 
@@ -14,11 +17,43 @@ export const BlockRenderer = ({ blocks }) => {
 
   return blocks?.map((block) => {
     switch (block.name) {
+      case "acf/cta-module": {
+        console.warn("cta", blocks);
+        return (
+            <Cta 
+              key={block.id}
+              blurb={block?.attributes?.data?.blurb}
+              heading={block?.attributes?.data?.heading}
+              link={block?.attributes?.data?.link}
+            />
+        );
+      }
+      case "acf/review-module": {
+        console.warn("revies", blocks);
+        return (
+            <Reviews 
+              key={block.id}
+              heading={block?.attributes?.data?.heading}
+              select_review={block?.attributes?.data?.select_review}
+            />
+        );
+      }
+      case "acf/article-module": {
+        console.warn("article", blocks);
+        return (
+            <Articles 
+              key={block.id}
+              heading={block?.attributes?.data?.heading}
+              articles={block?.attributes?.data?.article}
+              link={block?.attributes?.data?.link}
+            />
+        );
+      }
       case "acf/tab-module": {
         return (
             <Tab 
               key={block.id}
-              TabHeading={block.attributes?.data}
+              TabData={block.attributes?.data}
             />
         );
       }
