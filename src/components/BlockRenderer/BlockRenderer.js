@@ -1,6 +1,7 @@
 import { theme } from "../../../theme";
 import AboutMeArea from "../AboutMe/AboutMeArea";
 import { Articles } from "../Articles";
+import { Brands } from "../Brands";
 import { Breadcrumbs } from "../Breadcrumbs";
 import {Cover} from "../Cover";
 import { Cta } from "../Cta";
@@ -9,14 +10,32 @@ import { Hero } from "../Hero";
 import { HomeIntro } from "../HomeIntro";
 import { Paragraph } from "../Paragraph";
 import { Projects } from "../Projects";
+import { ProjectTab } from "../ProjectTab";
 import { Reviews } from "../Reviews";
 import { Service } from "../Service";
 import Tab from "../Tab/AboutMeTabs";
 
 export const BlockRenderer = ({ blocks }) => {
-
-  return blocks?.map((block) => {
+  console.warn("blocks", blocks);
+  return blocks.map((block) => {
     switch (block.name) {
+      case "acf/project-tab-module": {
+        return (
+            <ProjectTab 
+              key={block.id}    
+              projects={block?.attributes?.data?.projects}    
+            />
+        );
+      }
+      case "acf/brands-module": {
+        return (
+            <Brands 
+              key={block.id}
+              brands={block?.attributes?.data}
+             
+            />
+        );
+      }
       case "acf/cta-module": {
         console.warn("cta", blocks);
         return (

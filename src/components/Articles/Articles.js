@@ -23,7 +23,7 @@ export const Articles = ({articles, heading, link}) => {
                     </div>
                     <div className="tp-event-content">
                       <h4 className="tpevent-title mb-30">
-                        <Link href={`service${item.id}`}>
+                        <Link href={`blog${item.uri}`}>
                           <a>{item.post_title}</a>
                         </Link>
                       </h4>

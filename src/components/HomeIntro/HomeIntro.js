@@ -26,7 +26,7 @@ console.log("heroImgVal", heroImgVal);
           {heroImgVal?.length ? (
             <div className="row">
               {heroImgVal?.map(img => (
-              <div className="col-xl-6 col-lg-6">
+              <div key={img.id} className="col-xl-6 col-lg-6">
                 <div className="biograpy-image mb-60">
                   <img src={img?.url} alt={img?.title} />
                 </div>
@@ -44,7 +44,7 @@ console.log("heroImgVal", heroImgVal);
               {listVals?.length ? (
                 <div className="row">
                  {listVals?.map(list => (
-                  <div className="col-xl-6 col-lg-6 col-md-6">
+                  <div key={list.id} className="col-xl-6 col-lg-6 col-md-6">
                     <div className="features__list mb-10">
                       <ul>
                         <li className="d-flex align-items-center">
@@ -52,7 +52,7 @@ console.log("heroImgVal", heroImgVal);
                             <i className="far fa-check"></i>
                           </div>
                           <div className="features__list-text">
-                            <p>{list}{list.id}</p>
+                            <p>{list}</p>
                           </div>
                         </li>
                       </ul>
@@ -68,7 +68,7 @@ console.log("heroImgVal", heroImgVal);
         {/* biograpy-area end */}
 
         {/* vote-area start  */}
-        <div className="vote-area border-top white-bg pt-80 pb-80">
+        <div className="vote-area border-top grey-bg pt-80 pb-80">
           <div className="container">
             <div className="row">
               <div className="col-xl-12">

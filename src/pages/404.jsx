@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import client from '../apollo/client';
-import Breadcrumb from '../components/layout/Breadcrumb';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import { GET_MENUS } from '../queries/get-menus';
@@ -11,7 +10,6 @@ function Error404({ data }) {
     <>
 
       <Header headerLogo={headerLogo} headerMenus={headerMenus?.edges} footer={footer} />
-      <Breadcrumb title="PAGE NOT FOUND" subtitle="404" />
       <div className="error-area pt-100 pb-140">
         <div className="container">
           <div className="row justify-content-center">

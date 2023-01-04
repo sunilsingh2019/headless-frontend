@@ -2,37 +2,15 @@ import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 
-const BrandArea = ({hideTopBar = false,homeFiveBrand,brand,about,padd}) => {
-  const brandData = [
-    {
-      id: 1,
-      img:'/assets/img/brand/2/brand-1.png'
-    },
-    {
-      id: 2,
-      img:'/assets/img/brand/2/brand-2.png'
-    },
-    {
-      id: 3,
-      img:'/assets/img/brand/2/brand-3.png'
-    },
-    {
-      id: 4,
-      img:'/assets/img/brand/2/brand-4.png'
-    },
-    {
-      id: 5,
-      img:'/assets/img/brand/2/brand-5.png'
-    },
-    {
-      id: 6,
-      img:'/assets/img/brand/2/brand-1.png'
-    },
-    {
-      id: 7,
-      img:'/assets/img/brand/2/brand-2.png'
-    },
-  ]
+export const Brands = ({hideTopBar = false,homeFiveBrand,brand,about,padd, brands}) => {
+
+
+  var listVals = [];
+      
+ for (var i = 0; i < brands.list_logo; i++) {
+     listVals.push( brands['list_logo_' + i + '_logo_item'])
+ }
+ 
   return (
     <>
       <section id="brand" className={`tpbrand-area${brand ? brand : ''} 
@@ -45,13 +23,14 @@ const BrandArea = ({hideTopBar = false,homeFiveBrand,brand,about,padd}) => {
               </div>
             </div>}
           </div>
+          {listVals?.length ? (
           <div className="row">
             <div className="col-xl-12">
               <div className="tpbrand__slider-active">
 
                 <Swiper modules={[Autoplay]}
                   spaceBetween={25}
-                  slidesPerView={1}
+                  slidesPerView="auto"
                   autoplay={{ delay: 4000 }}
                   loop={true}
                   breakpoints={{
@@ -75,25 +54,22 @@ const BrandArea = ({hideTopBar = false,homeFiveBrand,brand,about,padd}) => {
                     },
                   }}
                 >
-                  {brandData.map(item => {
-                    return (
-                      <SwiperSlide key={item.id}>
+                   {listVals?.map(list_logo => (
+                      <SwiperSlide key={list_logo.id}>
                         <div className="tpbrand__slider-item">
-                          <a href="#"><img src={item.img} alt="brand" /></a>
+                             <img src={list_logo.url} alt="brand" />
                         </div>
                       </SwiperSlide>
-                    )
-                  })
-                  }
+                    ))}
                 </Swiper>
 
               </div>
             </div>
           </div>
+            ) : null}
         </div>
       </section>
     </>
   );
 };
 
-export default BrandArea;

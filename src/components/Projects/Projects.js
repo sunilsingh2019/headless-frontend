@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 export const Projects = ({projects}) => {
-
+console.log("projects", projects);
   return (
     <section className="tpfrn-project-area pt-140 pb-115">
         <div className="container">
@@ -50,16 +50,15 @@ export const Projects = ({projects}) => {
                       <SwiperSlide key={item.ID}>
                         <div className="tpfrn-project">
                           <div className="tpfrn-project__thumb mb-40">
-                            <Link href={`work${item?.uri}`}>
+                            <Link href={`project${item?.uri}`}>
                               <a>
                                 <img src={item?.featured_img_uri} alt="project-img" />
                               </a>
                             </Link>
                           </div>
                           <div className="tpfrn-project__content">
-                            <span className="tpfrn-project-sub-title mb-10">{item.ID}</span>
                             <h5 className="tpfrn-project-title">
-                              <Link href={`work${item?.uri}`}>
+                              <Link href={`project${item?.uri}`}>
                                 <a>{item?.post_title}</a>
                               </Link>
                             </h5>

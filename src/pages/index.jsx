@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { GET_PAGE } from '../queries/pages/get-page';
 import { cleanAndTransformBlocks } from '../utils/cleanAndTransformBlocks';
 import { sanitize } from '../utils/miscellaneous';
-import { handleRedirectsAndReturnData } from '../utils/slug';
+import { FALLBACK, handleRedirectsAndReturnData } from '../utils/slug';
 
 export default function Home({ data, blocks }) {
   return (
@@ -42,4 +42,3 @@ export async function getStaticProps({context}) {
 
   return handleRedirectsAndReturnData(defaultProps, data, errors, 'page');
 }
-

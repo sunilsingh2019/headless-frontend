@@ -11,8 +11,8 @@ import { cleanAndTransformBlocks } from '../utils/cleanAndTransformBlocks';
 
 
 const Page = ({ data, blocks}) => {
-	console.warn('dataslug', data);
-	console.warn('blocksslug', blocks);
+	console.warn('data', data);
+	console.warn('data', blocks);
 	const router = useRouter();
 
 	// If the page is not yet generated, this will be displayed
@@ -24,7 +24,7 @@ const Page = ({ data, blocks}) => {
 	return (
 		<Layout data={data}>
 			{/* <div dangerouslySetInnerHTML={{ __html: sanitize(data?.page?.content ?? {}) }} /> */}
-			<BlockRenderer blocks={blocks} data={data} /> 
+			<BlockRenderer blocks={blocks } data={data} /> 
 		</Layout>
 	);
 };
@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
 		},
 	});
 
-	const blocks = cleanAndTransformBlocks(data?.page.blocksJSON);
+	const blocks = cleanAndTransformBlocks(data.page.blocksJSON ?? null);
 	const defaultProps = {
 		
 		props: {
@@ -82,8 +82,8 @@ export async function getStaticPaths() {
 	const pathsData = [];
 
 	data?.pages?.nodes && data?.pages?.nodes.map(page => {
-		if (!isEmpty(page?.uri)) {
-			const slugs = page?.uri?.split('/').filter(pageSlug => pageSlug);
+		if (!isEmpty(page?.slug)) {
+			const slugs = page?.slug?.split('/').filter(pageSlug => pageSlug);
 			pathsData.push({ params: { slug: slugs } });
 		}
 	});

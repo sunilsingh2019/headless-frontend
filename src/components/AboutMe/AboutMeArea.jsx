@@ -26,10 +26,10 @@ const AboutMeArea = ({email, phone, experience, expertise, profile_image, name, 
                   </ul>
                 </div>
                 <div className="aboutme-social mt-40">
-                <a target="_blank" href={linkedin}><i className="fa fa-linkedin"></i></a>
-                  <a target="_blank" href={facebook}><i className="fa fa-facebook-f"></i></a>
-                  <a target="_blank" href={instagram}><i className="fa fa-instagram"></i></a>
-                  <a target="_blank" href={twitter}><i className="fa fa-twitter"></i></a>
+                <a target="_blank" href={linkedin}><i className="fab fa-linkedin"></i></a>
+                  <a target="_blank" href={facebook}><i className="fab fa-facebook-f"></i></a>
+                  <a target="_blank" href={instagram}><i className="fab fa-instagram"></i></a>
+                  <a target="_blank" href={twitter}><i className="fab fa-twitter"></i></a>
                 </div>
               </div>
             </div>
