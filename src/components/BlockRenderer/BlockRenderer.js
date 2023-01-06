@@ -3,6 +3,7 @@ import AboutMeArea from "../AboutMe/AboutMeArea";
 import { Articles } from "../Articles";
 import { Brands } from "../Brands";
 import { Breadcrumbs } from "../Breadcrumbs";
+import ContactArea from "../ContactArea/ContactArea";
 import {Cover} from "../Cover";
 import { Cta } from "../Cta";
 import {Heading} from "../Heading";
@@ -16,9 +17,25 @@ import { Service } from "../Service";
 import Tab from "../Tab/AboutMeTabs";
 
 export const BlockRenderer = ({ blocks }) => {
-  console.warn("blocks", blocks);
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/contact-us-module": {
+        return (
+            <ContactArea 
+              key={block.id}
+              formid={block?.attributes?.data?.formid } 
+              email={block?.attributes?.data?.email } 
+              facebook={block?.attributes?.data?.facebook } 
+              form_blurb={block?.attributes?.data?.form_blurb } 
+              form_heading={block?.attributes?.data?.form_heading } 
+              instagram={block?.attributes?.data?.instagram } 
+              linkedin={block?.attributes?.data?.linkedin } 
+              phone={block?.attributes?.data?.phone } 
+              twitter={block?.attributes?.data?.twitter } 
+      
+            />
+        );
+      }
       case "acf/project-tab-module": {
         return (
             <ProjectTab 

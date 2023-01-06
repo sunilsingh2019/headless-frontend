@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
 		},
 	});
 
-	const blocks = cleanAndTransformBlocks(data.page.blocksJSON ?? null);
+	const blocks = cleanAndTransformBlocks(data?.page?.blocksJSON ?? null);
 	const defaultProps = {
 		
 		props: {
@@ -93,3 +93,40 @@ export async function getStaticPaths() {
 		fallback: FALLBACK
 	};
 }
+
+
+// import { gql } from "@apollo/client";
+// import client from "../apollo/client";
+// import { BlockRenderer } from "../components/BlockRenderer";
+// import Layout from "../components/layout";
+// import { Page } from "../components/Page";
+// import { getPageStaticProps } from "../utils/getPageStaticProps";
+
+// export default Page;
+
+// export const getStaticProps = getPageStaticProps;
+
+// export const getStaticPaths = async () => {
+//   const { data } = await client.query({
+//     query: gql`
+//       query AllPagesQuery {
+//         pages {
+//           nodes {
+//             uri
+//           }
+//         }
+//       }
+//     `,
+//   });
+
+//   return {
+//     paths: [...data.pages.nodes]
+//       .filter((page) => page.uri !== "/")
+//       .map((page) => ({
+//         params: {
+//           slug: page.uri.substring(1, page.uri.length - 1).split("/"),
+//         },
+//       })),
+//     fallback: false,
+//   };
+// };
