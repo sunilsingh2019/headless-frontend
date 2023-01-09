@@ -15,10 +15,10 @@ const ContactArea = ({
 
 
   
-  const [state, handleSubmit] = useForm(formid);
+  const [state, handleSubmit] = useForm(`"${formid}"`);
   if (state.succeeded) {
       return (
-        <div className="container pt-115 pb-120">
+      <div className="container pt-115 pb-120">
         <div className="row">
           <div className="col-xl-12">
             <div className="tp-photograper-cta-wrapper text-center">

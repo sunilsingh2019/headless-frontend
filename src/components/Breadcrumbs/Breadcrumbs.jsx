@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-export const Breadcrumbs = ({title}) => {
+export const Breadcrumbs = ({title, page_title}) => {
+  console.warn("Page Ttitle", page_title)
     return (
         <>
         <section className="breadcrumb__area include-bg pt-140 pb-140 breadcrumb__overlay" 
@@ -9,11 +10,11 @@ export const Breadcrumbs = ({title}) => {
             <div className="row">
               <div className="col-xxl-12">
                 <div className="breadcrumb__content text-center p-relative z-index-1">
-                  <h3 className="breadcrumb__title">{title}</h3>
+                  <h3 className="breadcrumb__title">{ page_title?.post_title ?? title}</h3>
                   <div className="breadcrumb__list">
                     <span><Link href="/">Home</Link></span>
                     <span className="dvdr"><i className="fa-light fa-colon"></i></span>
-                    <span className="tp-current">{title}</span>
+                    <span className="tp-current">{page_title?.post_type} / { page_title?.post_title ?? title}</span>
                   </div>
                 </div>
               </div>

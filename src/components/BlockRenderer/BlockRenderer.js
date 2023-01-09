@@ -6,19 +6,75 @@ import { Breadcrumbs } from "../Breadcrumbs";
 import ContactArea from "../ContactArea/ContactArea";
 import {Cover} from "../Cover";
 import { Cta } from "../Cta";
+import { FormsPree } from "../FormsPree";
+import { FreeText } from "../FreeText";
+import { Gallery } from "../Gallery";
 import {Heading} from "../Heading";
 import { Hero } from "../Hero";
 import { HomeIntro } from "../HomeIntro";
 import { Paragraph } from "../Paragraph";
+import { ProjectIntro } from "../ProjectIntro";
 import { Projects } from "../Projects";
 import { ProjectTab } from "../ProjectTab";
 import { Reviews } from "../Reviews";
 import { Service } from "../Service";
+import { Step } from "../Step";
 import Tab from "../Tab/AboutMeTabs";
 
 export const BlockRenderer = ({ blocks }) => {
+  console.warn("blocks", blocks);
+
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/portfolio-intro-module": {
+        return (
+            <ProjectIntro
+              key={block.id}
+              banner={block?.attributes?.data?.banner}
+              heading={block?.attributes?.data?.heading}
+              listItem={block?.attributes?.data}
+             
+            />
+        );
+      }
+      case "acf/image-module": {
+        return (
+            <Gallery
+              key={block.id}
+              imageList={block?.attributes?.data}
+             
+            />
+        );
+      }
+      case "acf/step-module": {
+        return (
+            <Step
+              key={block.id}
+              heading={block?.attributes?.data?.heading}
+              blurb={block?.attributes?.data?.blurb}
+              step={block?.attributes?.data}
+            />
+        );
+      }
+      case "acf/free-text-module": {
+        return (
+            <FreeText
+              key={block.id}
+              heading={block?.attributes?.data?.heading}
+              blurb={block?.attributes?.data?.blurb}
+            />
+        );
+      }
+      case "acf/formspree-module": {
+        return (
+            <FormsPree
+              key={block.id}
+              form_id={block?.attributes?.data?.form_id } 
+              heading={block?.attributes?.data?.heading}
+              background_color={block?.attributes?.data?.background_color}
+            />
+        );
+      }
       case "acf/contact-us-module": {
         return (
             <ContactArea 
@@ -122,6 +178,7 @@ export const BlockRenderer = ({ blocks }) => {
             <Breadcrumbs 
             key={block.id}
             title={block?.attributes?.data?.title}
+            page_title={block?.attributes?.data?.select_page_title}
             />
           </>
         );
